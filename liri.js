@@ -8,18 +8,36 @@ const keys = require('./keys.js');
 
 const spotify = new Spotify(keys.spotify);
 
-var testSearch = "dogs";
-
 if (process.argv[2] === "spotify-this-song") {
     var getSong = process.argv[3];
 
-    spotify.search({ type: 'track', query: getSong, limit: 5 }, function (err, data) {
+    spotify.search({ type: 'track', query: getSong, limit: 1 }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log(data);
+        
+        var spotifySongName = data.tracks.items[0].name;
+
+        var spotifyBandName = data.tracks.items[0].album.artists[0].name;
+
+        var spotifyLink = data.tracks.href.toString();
+
+        var spotifyArtistsObj = data.tracks.items[0].album.artists;
+
+        var spotifyArtists = Object.values(spotifyArtistsObj);
+
+        console.log('Song Name: ' + spotifySongName);
+        console.log('Band Name: ' + spotifyBandName);
+        console.log('Link to Song: ' + spotifyLink);
+        console.log('Artist(s): ' + Object.values(spotifyArtistsObj));
     });
 };
+
+// Artist(s)
+// The song's name
+// A preview link of the song from Spotify
+// The album that the song is from
+
 
 // axios
 //     .get("https://en.wikipedia.org/wiki/" + testSearch)
