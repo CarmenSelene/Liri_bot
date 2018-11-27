@@ -28,7 +28,7 @@ function spotifyApp(x) {
 
     if (getSong === undefined && x === undefined) {
         getSong = "the sign ace of base";
-    } else {
+    } else if (getSong === undefined && x == true) {
         getSong = x;
     }
 
