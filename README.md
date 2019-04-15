@@ -1,4 +1,5 @@
-# liri_bot
+## Back-End Program Interface and Execution
+### Node.js, Javascript, API Calls, File Read/Write
 
 Liri_Bot is a command line app built with Node.js and various API's to submit, accept responses and output formatted data from various sources based on dynamic user input.
 
